@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>fuh yeah</title>
+<style>
+body{background:#0e0e0e;color:#fff;font-family:sans-serif;text-align:center;padding:40px}
+input{width:90%;max-width:400px;padding:10px;margin:10px;border:none;border-radius:6px;font-size:16px}
+button{padding:10px 20px;border:none;border-radius:6px;background:#00aaff;color:#fff;font-size:16px;cursor:pointer}
+button:hover{background:#0091cc}
+</style>
+</head>
+<body>
+<h2>dxfc lowk tuff</h2>
+<input id="link" placeholder="Paste Roblox link">
+<br>
+<button onclick="join()">Join</button>
+<script>
+function join(){
+let v=document.getElementById("link").value.trim()
+if(!v)return alert("Paste a Roblox link first")
+const m=v.match(/deep_link_value=([^&]+)/)
+if(m)v=decodeURIComponent(m[1])
+if(v.includes("roblox.com"))v="roblox://navigation/share_links?code="+(v.match(/code=([^&]+)/)?.[1]||"")
+location.href=v
+setTimeout(()=>alert("if it didnt open try this link:\n\n"+v),2000)
+}
+</script>
+</body>
+</html>
