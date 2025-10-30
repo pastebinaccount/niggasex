@@ -13,17 +13,17 @@ button:hover{background:#0091cc}
 </head>
 <body>
 <h2>dxfc lowk tuff</h2>
-<input id="link" placeholder="link here nigga">
+<input id="link" placeholder="link here">
 <br>
-<button onclick="join()">Join</button>
-<button onclick="clipJoin()">Join from Clipboard</button>
+<button onclick="join()">join</button>
+<button onclick="clipJoin()">join from Clipboard</button>
 <script>
 async function join(v){
  if(!v)v=document.getElementById("link").value.trim()
- if(!v)return alert("put a link retard")
- let c=v.match(/code=([a-zA-Z0-9]+)/)
- if(!c)return alert("Invalid link")
- let l=`roblox://navigation/share_links?code=${c[1]}&type=Server`
+ if(!v)return alert("put link")
+ let code=v.match(/code=([a-zA-Z0-9]+)/) || v.match(/privateServerLinkCode=([0-9]+)/)
+ if(!code)return alert("invalid link")
+ let l=`roblox://navigation/share_links?code=${code[1]}&type=Server`
  location.href=l
 }
 async function clipJoin(){
