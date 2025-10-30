@@ -3,33 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>dxfc</title>
-<style>
-body{background:#0e0e0e;color:#fff;font-family:sans-serif;text-align:center;padding:40px}
-input,button{width:90%;max-width:400px;padding:10px;margin:10px;border:none;border-radius:6px;font-size:16px}
-button{background:#00aaff;color:#fff;cursor:pointer}
-button:hover{background:#0091cc}
-</style>
+<title>dxfc joiner</title>
+<style>body{background:#0e0e0e;color:#fff;font-family:sans-serif;text-align:center;padding:40px}input{width:90%;max-width:400px;padding:10px;margin:10px;border:none;border-radius:6px;font-size:16px}</style>
 </head>
 <body>
-<h2>dxfc lowk tuff</h2>
-<input id="link" placeholder="link here">
-<br>
-<button onclick="join()">join</button>
-<button onclick="clipJoin()">join from Clipboard</button>
+<h2>dxfc so tuff boii</h2>
+<input id="l" placeholder="link here">
 <script>
-async function join(v){
- if(!v)v=document.getElementById("link").value.trim()
- if(!v)return alert("put link")
- let code=v.match(/code=([a-zA-Z0-9]+)/) || v.match(/privateServerLinkCode=([0-9]+)/)
- if(!code)return alert("invalid link")
- let l=`roblox://navigation/share_links?code=${code[1]}&type=Server`
- location.href=l
+async function j(v){
+ if(!v)v=document.getElementById("l").value.trim()
+ if(!v)return
+ let c=v.match(/code=([a-zA-Z0-9]+)/)||v.match(/privateServerLinkCode=([0-9]+)/)||v.match(/rob\.lox\/[a-zA-Z0-9]+/)||v.match(/roblox\.com\/games\/([0-9]+)/)
+ if(!c)return alert("Invalid link")
+ location.href=v.includes("roblox.com/games/")?`roblox://games/${c[1]}`:c[1].startsWith("http")?c[1]:`roblox://navigation/share_links?code=${c[1]}&type=Server`
 }
-async function clipJoin(){
- try{join(await navigator.clipboard.readText())}
- catch{alert("clipboard access blocked")}
-}
+async function ac(){try{j(await navigator.clipboard.readText())}catch{}}
+ac()
 </script>
 </body>
 </html>
