@@ -22,7 +22,7 @@ let v=document.getElementById("link").value.trim()
 if(!v)return alert("Paste a Roblox link first")
 const m=v.match(/deep_link_value=([^&]+)/)
 if(m)v=decodeURIComponent(m[1])
-if(v.includes("roblox.com"))v="roblox://navigation/share_links?code="+(v.match(/code=([^&]+)/)?.[1]&type=Server||"")
+if(v.includes("roblox.com"))v="roblox://navigation/share_links?code="+(v.match(/code=([^&]+)/)&type=Server?.[1]||"")
 location.href=v
 setTimeout(()=>alert("if it didnt open try this link:\n\n"+v),2000)
 }
