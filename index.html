@@ -4,11 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>dxfc joiner</title>
-<style>body{background:#0e0e0e;color:#fff;font-family:sans-serif;text-align:center;padding:40px}input{width:90%;max-width:400px;padding:10px;margin:10px;border:none;border-radius:6px;font-size:16px}</style>
+<style>
+body{background:#0e0e0e;color:#fff;font-family:sans-serif;text-align:center;padding:40px}
+input,button{width:90%;max-width:400px;padding:10px;margin:10px;border:none;border-radius:6px;font-size:16px}
+button{background:#00aaff;color:#fff;cursor:pointer}
+button:hover{background:#0091cc}
+</style>
 </head>
 <body>
 <h2>dxfc so tuff boii</h2>
 <input id="l" placeholder="link here">
+<br>
+<button onclick="j()">Join</button>
+<button onclick="clip()">Join from Clipboard</button>
 <script>
 async function j(v){
  if(!v)v=document.getElementById("l").value.trim()
@@ -17,8 +25,7 @@ async function j(v){
  if(!c)return alert("Invalid link")
  location.href=v.includes("roblox.com/games/")?`roblox://games/${c[1]}`:c[1].startsWith("http")?c[1]:`roblox://navigation/share_links?code=${c[1]}&type=Server`
 }
-async function ac(){try{j(await navigator.clipboard.readText())}catch{}}
-ac()
+async function clip(){try{j(await navigator.clipboard.readText())}catch{}}
 </script>
 </body>
 </html>
